@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>IVB Collective</title>
+<title>IVB Collective &mdash; Mesh Zipper Pouches</title>
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   body { font-family: 'Georgia', serif; background: #0a0a0a; color: #f0ede6; min-height: 100vh; }
@@ -20,11 +20,10 @@
     font-size: 15px; letter-spacing: 0.22em; text-transform: uppercase;
     color: #f0ede6; font-weight: normal;
   }
-  nav a {
-    color: rgba(240,237,230,0.55); text-decoration: none; font-family: Arial, sans-serif;
+  nav span.coming {
+    color: rgba(240,237,230,0.35); font-family: Arial, sans-serif;
     font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase;
   }
-  nav a:hover { color: #f0ede6; }
 
   .hero {
     min-height: 88vh; display: flex; flex-direction: column;
@@ -51,53 +50,110 @@
   .hero-sub {
     font-family: Arial, sans-serif; font-size: 14px;
     color: rgba(240,237,230,0.55); letter-spacing: 0.06em;
-    max-width: 420px; line-height: 1.8;
+    max-width: 460px; line-height: 1.8;
     position: relative; z-index: 1; margin-bottom: 2.8rem;
   }
-  .btn-amazon {
+  .btn-coming {
     display: inline-flex; align-items: center; gap: 10px;
-    background: rgba(180,150,90,0.12); border: 0.5px solid rgba(180,150,90,0.5);
-    color: rgba(180,150,90,0.95); padding: 0.85rem 2rem;
+    background: rgba(180,150,90,0.08); border: 0.5px solid rgba(180,150,90,0.3);
+    color: rgba(180,150,90,0.6); padding: 0.85rem 2rem;
     font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 0.18em;
-    text-transform: uppercase; text-decoration: none; cursor: pointer;
-    border-radius: 2px; transition: background 0.2s; position: relative; z-index: 1;
+    text-transform: uppercase; border-radius: 2px; position: relative; z-index: 1;
+    cursor: default;
   }
-  .btn-amazon:hover { background: rgba(180,150,90,0.22); }
 
   .divider { width: 40px; height: 1px; background: rgba(180,150,90,0.4); margin: 0 auto; }
 
-  .pillars {
-    padding: 6rem 2.5rem; max-width: 960px; margin: 0 auto; text-align: center;
+  .product-sec {
+    padding: 6rem 2.5rem; max-width: 960px; margin: 0 auto;
   }
   .section-label {
     font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 0.35em;
-    text-transform: uppercase; color: rgba(180,150,90,0.7); margin-bottom: 1rem;
+    text-transform: uppercase; color: rgba(180,150,90,0.7); margin-bottom: 1rem; text-align: center;
   }
   .section-title {
     font-size: clamp(1.5rem, 3.5vw, 2.4rem);
     letter-spacing: 0.08em; text-transform: uppercase;
-    font-weight: normal; margin-bottom: 1rem;
+    font-weight: normal; margin-bottom: 1rem; text-align: center;
   }
   .section-body {
     font-family: Arial, sans-serif; font-size: 14px;
-    color: rgba(240,237,230,0.55); line-height: 1.9; max-width: 520px; margin: 0 auto 4rem;
+    color: rgba(240,237,230,0.55); line-height: 1.9; max-width: 560px; margin: 0 auto 4rem;
+    text-align: center;
   }
-  .pillars-grid {
+
+  .product-card {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    align-items: center; border: 0.5px solid rgba(240,237,230,0.1);
+    padding: 3rem; margin-bottom: 4rem;
+  }
+  @media (max-width: 640px) { .product-card { grid-template-columns: 1fr; } }
+
+  .product-visual {
+    display: flex; flex-direction: column; align-items: center; gap: 1rem;
+  }
+  .color-dots { display: flex; gap: 8px; margin-top: 1rem; }
+  .dot { width: 14px; height: 14px; border-radius: 50%; border: 0.5px solid rgba(240,237,230,0.2); }
+
+  .product-info { display: flex; flex-direction: column; gap: 1.2rem; }
+  .product-name {
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    letter-spacing: 0.08em; text-transform: uppercase; font-weight: normal;
+  }
+  .product-tagline {
+    font-family: Arial, sans-serif; font-size: 13px;
+    color: rgba(180,150,90,0.8); letter-spacing: 0.08em;
+  }
+  .product-desc {
+    font-family: Arial, sans-serif; font-size: 13px;
+    color: rgba(240,237,230,0.5); line-height: 1.9;
+  }
+
+  .spec-row {
+    display: flex; flex-direction: column; gap: 8px;
+    border-top: 0.5px solid rgba(240,237,230,0.08);
+    padding-top: 1.2rem;
+  }
+  .spec-item {
+    display: flex; justify-content: space-between; align-items: center;
+  }
+  .spec-key {
+    font-family: Arial, sans-serif; font-size: 11px; letter-spacing: 0.12em;
+    text-transform: uppercase; color: rgba(240,237,230,0.35);
+  }
+  .spec-val {
+    font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 0.06em;
+    color: rgba(180,150,90,0.85);
+  }
+
+  .features-grid {
     display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1.5px; background: rgba(240,237,230,0.08); border: 0.5px solid rgba(240,237,230,0.08);
+    margin-bottom: 4rem;
   }
-  .pillar { background: #0a0a0a; padding: 2.5rem 1.8rem; text-align: left; }
-  .pillar-num {
-    font-family: Arial, sans-serif; font-size: 10px; letter-spacing: 0.2em;
-    color: rgba(180,150,90,0.6); margin-bottom: 1.2rem;
+  .feature { background: #0a0a0a; padding: 2rem 1.8rem; }
+  .feature-icon { font-size: 18px; margin-bottom: 1rem; display: block; color: rgba(180,150,90,0.6); }
+  .feature-name {
+    font-size: 0.9rem; letter-spacing: 0.12em; text-transform: uppercase;
+    margin-bottom: 0.6rem; font-weight: normal;
   }
-  .pillar-name {
-    font-size: 1rem; letter-spacing: 0.12em; text-transform: uppercase;
-    margin-bottom: 0.8rem; font-weight: normal;
+  .feature-desc {
+    font-family: Arial, sans-serif; font-size: 12px;
+    color: rgba(240,237,230,0.4); line-height: 1.8;
   }
-  .pillar-desc {
-    font-family: Arial, sans-serif; font-size: 13px;
-    color: rgba(240,237,230,0.45); line-height: 1.8;
+
+  .uses-sec {
+    padding: 4rem 2.5rem; border-top: 0.5px solid rgba(240,237,230,0.08);
+    max-width: 960px; margin: 0 auto; text-align: center;
+  }
+  .uses-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 1rem; margin-top: 2.5rem;
+  }
+  .use-item { border: 0.5px solid rgba(240,237,230,0.08); padding: 1.5rem 1rem; }
+  .use-label {
+    font-family: Arial, sans-serif; font-size: 12px; letter-spacing: 0.1em;
+    text-transform: uppercase; color: rgba(240,237,230,0.45);
   }
 
   .amazon-sec {
@@ -136,12 +192,12 @@
     </svg>
     <span class="logo-text-nav">IVB Collective</span>
   </div>
-  <a href="https://www.amazon.com" target="_blank">Shop on Amazon &rarr;</a>
+  <span class="coming">Coming Soon to Amazon</span>
 </nav>
 
 <section class="hero">
   <div class="hero-bg"></div>
-  <p class="hero-tagline">Premium Goods &middot; Curated Selection &middot; Amazon Storefront</p>
+  <p class="hero-tagline">Organization &middot; Storage &middot; Style</p>
 
   <svg class="hero-logo-svg" width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
     <polygon points="40,6 73,24 73,56 40,74 7,56 7,24" fill="rgba(180,150,90,0.06)" stroke="rgba(180,150,90,0.7)" stroke-width="1"/>
@@ -150,52 +206,145 @@
   </svg>
 
   <h1 class="hero-title">IVB<br/><span>Collective</span></h1>
-  <p class="hero-sub">Thoughtfully sourced products, delivered through Amazon's trusted marketplace. Quality you can count on.</p>
-  <a class="btn-amazon" href="https://www.amazon.com" target="_blank">
+  <p class="hero-sub">15-pack A4 mesh zipper pouches &mdash; waterproof, durable, and built for the way you work, study, and travel.</p>
+  <div class="btn-coming">
     <span style="color:#FF9900; font-size:16px;">&#x61;</span>
-    View Our Amazon Store
-  </a>
+    Coming Soon on Amazon
+  </div>
 </section>
 
 <div class="divider"></div>
 
-<section class="pillars">
-  <p class="section-label">What we stand for</p>
-  <h2 class="section-title">The IVB Standard</h2>
-  <p class="section-body">Every product under the IVB Collective name is chosen with purpose &mdash; built to meet the expectations of customers who value quality over quantity.</p>
+<section class="product-sec">
+  <p class="section-label">Our product</p>
+  <h2 class="section-title">A4 Mesh Zipper Pouch &mdash; 15 Pack</h2>
+  <p class="section-body">One pack, fifteen pouches, five colors. Everything you need to get organized at work, school, or on the road.</p>
 
-  <div class="pillars-grid">
-    <div class="pillar">
-      <p class="pillar-num">01</p>
-      <p class="pillar-name">Quality</p>
-      <p class="pillar-desc">We stand behind every item we sell. Our products are vetted for durability, function, and value.</p>
+  <div class="product-card">
+    <div class="product-visual">
+      <svg width="220" height="170" viewBox="0 0 220 170" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Shadow stack effect (back pouches) -->
+        <rect x="30" y="38" width="172" height="122" rx="6" fill="rgba(180,150,90,0.04)" stroke="rgba(180,150,90,0.2)" stroke-width="0.5"/>
+        <rect x="25" y="34" width="172" height="122" rx="6" fill="rgba(180,150,90,0.04)" stroke="rgba(180,150,90,0.25)" stroke-width="0.5"/>
+        <!-- Main pouch body -->
+        <rect x="18" y="28" width="180" height="122" rx="6" fill="rgba(180,150,90,0.08)" stroke="rgba(180,150,90,0.55)" stroke-width="1"/>
+        <!-- Mesh grid horizontal -->
+        <line x1="18" y1="50" x2="198" y2="50" stroke="rgba(180,150,90,0.18)" stroke-width="0.5"/>
+        <line x1="18" y1="70" x2="198" y2="70" stroke="rgba(180,150,90,0.18)" stroke-width="0.5"/>
+        <line x1="18" y1="90" x2="198" y2="90" stroke="rgba(180,150,90,0.18)" stroke-width="0.5"/>
+        <line x1="18" y1="110" x2="198" y2="110" stroke="rgba(180,150,90,0.18)" stroke-width="0.5"/>
+        <line x1="18" y1="130" x2="198" y2="130" stroke="rgba(180,150,90,0.18)" stroke-width="0.5"/>
+        <!-- Mesh grid vertical -->
+        <line x1="48" y1="28" x2="48" y2="150" stroke="rgba(180,150,90,0.18)" stroke-width="0.5"/>
+        <line x1="78" y1="28" x2="78" y2="150" stroke="rgba(180,150,90,0.18)" stroke-width="0.5"/>
+        <line x1="108" y1="28" x2="108" y2="150" stroke="rgba(180,150,90,0.18)" stroke-width="0.5"/>
+        <line x1="138" y1="28" x2="138" y2="150" stroke="rgba(180,150,90,0.18)" stroke-width="0.5"/>
+        <line x1="168" y1="28" x2="168" y2="150" stroke="rgba(180,150,90,0.18)" stroke-width="0.5"/>
+        <!-- Zipper bar -->
+        <rect x="18" y="20" width="180" height="11" rx="3" fill="none" stroke="rgba(180,150,90,0.6)" stroke-width="1"/>
+        <!-- Zipper pull -->
+        <rect x="98" y="16" width="22" height="8" rx="2" fill="rgba(180,150,90,0.35)" stroke="rgba(180,150,90,0.7)" stroke-width="0.5"/>
+        <circle cx="109" cy="20" r="2" fill="rgba(180,150,90,0.8)"/>
+        <!-- Loop -->
+        <path d="M106 16 Q109 7 112 16" fill="none" stroke="rgba(180,150,90,0.65)" stroke-width="1.5"/>
+        <!-- Size label -->
+        <text x="109" y="100" text-anchor="middle" font-family="Georgia,serif" font-size="11" fill="rgba(180,150,90,0.45)" letter-spacing="3">A4</text>
+        <text x="109" y="116" text-anchor="middle" font-family="Arial,sans-serif" font-size="9" fill="rgba(180,150,90,0.3)" letter-spacing="1">13.4&quot; &times; 9.4&quot;</text>
+      </svg>
+
+      <div class="color-dots">
+        <div class="dot" style="background:#e85b5b;"></div>
+        <div class="dot" style="background:#5b8de8;"></div>
+        <div class="dot" style="background:#5be87a;"></div>
+        <div class="dot" style="background:#e8c45b;"></div>
+        <div class="dot" style="background:#b45be8;"></div>
+      </div>
+      <p style="font-family:Arial,sans-serif;font-size:11px;letter-spacing:0.1em;color:rgba(240,237,230,0.3);text-transform:uppercase;">5 colors &mdash; 3 of each per pack</p>
     </div>
-    <div class="pillar">
-      <p class="pillar-num">02</p>
-      <p class="pillar-name">Trust</p>
-      <p class="pillar-desc">Sold through Amazon &mdash; the world's most trusted marketplace &mdash; with fast shipping and buyer protection.</p>
+
+    <div class="product-info">
+      <p class="product-tagline">IVB Collective &mdash; Signature Series</p>
+      <h3 class="product-name">A4 Mesh Zipper<br/>Pouch &mdash; 15 Pack</h3>
+      <p class="product-desc">Waterproof PVC mesh with smooth metal zipper. Translucent design lets you see contents instantly. Durable, foldable, and ready for daily use.</p>
+
+      <div class="spec-row">
+        <div class="spec-item">
+          <span class="spec-key">Pack size</span>
+          <span class="spec-val">15 pouches</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-key">Pouch size</span>
+          <span class="spec-val">A4 &mdash; 13.4&quot; &times; 9.4&quot;</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-key">Colors included</span>
+          <span class="spec-val">5 colors, 3 of each</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-key">Material</span>
+          <span class="spec-val">Waterproof PVC mesh</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-key">Closure</span>
+          <span class="spec-val">Smooth metal zipper</span>
+        </div>
+      </div>
     </div>
-    <div class="pillar">
-      <p class="pillar-num">03</p>
-      <p class="pillar-name">Selection</p>
-      <p class="pillar-desc">A curated catalog of products that solve real problems and fit real lives. No filler, just the good stuff.</p>
+  </div>
+
+  <div class="features-grid">
+    <div class="feature">
+      <span class="feature-icon">&#9670;</span>
+      <p class="feature-name">Waterproof</p>
+      <p class="feature-desc">Thick PVC material keeps your documents safe from spills and moisture.</p>
     </div>
+    <div class="feature">
+      <span class="feature-icon">&#9670;</span>
+      <p class="feature-name">See-through mesh</p>
+      <p class="feature-desc">Find what you need at a glance without opening every pouch.</p>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">&#9670;</span>
+      <p class="feature-name">Strong zipper</p>
+      <p class="feature-desc">Smooth metal zipper with rope loop &mdash; doubles as a hanging ring.</p>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">&#9670;</span>
+      <p class="feature-name">Great value</p>
+      <p class="feature-desc">15 pouches in 5 colors &mdash; enough for home, work, and school all at once.</p>
+    </div>
+  </div>
+</section>
+
+<section class="uses-sec">
+  <p class="section-label">Where to use it</p>
+  <h2 class="section-title">Built for every setting</h2>
+  <div class="uses-grid">
+    <div class="use-item"><p class="use-label">Office</p></div>
+    <div class="use-item"><p class="use-label">School</p></div>
+    <div class="use-item"><p class="use-label">Travel</p></div>
+    <div class="use-item"><p class="use-label">Home</p></div>
+    <div class="use-item"><p class="use-label">Crafts</p></div>
+    <div class="use-item"><p class="use-label">Storage</p></div>
   </div>
 </section>
 
 <section class="amazon-sec">
   <div class="amazon-badge">
     <span style="color:#FF9900; font-size:16px;">&#x61;</span>
-    <span class="amazon-badge-text">Available exclusively on Amazon</span>
+    <span class="amazon-badge-text">Coming soon to Amazon</span>
   </div>
-  <h2 class="section-title">Shop IVB Collective on Amazon</h2>
-  <p class="section-body">Browse our full selection of products, read verified reviews, and enjoy Amazon's seamless checkout &mdash; all in one place.</p>
-  <a class="btn-amazon" href="https://www.amazon.com" target="_blank">Find Us on Amazon &rarr;</a>
+  <h2 class="section-title">IVB Collective on Amazon</h2>
+  <p class="section-body">Our storefront is launching soon. The IVB Collective A4 Mesh Zipper Pouch 15-pack will be available on Amazon with fast shipping and Amazon&rsquo;s trusted checkout.</p>
+  <div class="btn-coming">
+    <span style="color:#FF9900; font-size:16px;">&#x61;</span>
+    Storefront Launching Soon
+  </div>
 </section>
 
 <footer>
-  <p>&copy; 2025 IVB Collective. All rights reserved.</p>
-  <p>Official brand website &middot; Products sold via Amazon</p>
+  <p>&copy; 2025 Danlo Store. All rights reserved.</p>
+  <p>IVB Collective is a brand of Danlo Store &middot; Products sold via Amazon</p>
 </footer>
 
 </body>
